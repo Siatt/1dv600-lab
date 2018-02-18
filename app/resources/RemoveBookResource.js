@@ -5,15 +5,10 @@
 
   module.exports = function (id, callback) {
     LibraryDAO.readXMLFile(books => {
-      let remain = books.catalog.book.filter(book => {
-        return book.$.id !== id
+      let remain = books.filter(book => {
+        return books.catalog.book.book.$.id !== id
       })
-      let result = {
-        catalog: {
-          book: remain
-        }
-      }
-      LibraryDAO.writeXMLFile(result, function () {
+      LibraryDAO.writeXMLFile(remain, function () {
         callback()
       })
     })
