@@ -1,3 +1,4 @@
+
 (function () {
   'use strict'
 
@@ -18,7 +19,7 @@
         )
         bookList.push(x)
       })
+      callback(JSON.stringify(bookList))
     })
-    callback(JSON.stringify(bookList))
   }
 }())

@@ -24,7 +24,11 @@
 
         // Write the entire file from the file system.
     writeXMLFile: function (data) {
-
+      let builder = new xml2js.Builder()
+      let xml = builder.buildObject(data)
+      fs.writeFile('./books.xml', xml, err => {
+        if (err) console.log(err)
+      })
     }
   }
 
