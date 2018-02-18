@@ -1,26 +1,32 @@
 (function () {
-    "use strict";
+  'use strict'
 
-    var fs = require('fs');
+  var fs = require('fs')
 
     // Instructions how to use the xml2js
     // https://github.com/Leonidas-from-XIV/node-xml2js
-    var xml2js = require('xml2js');
-
+  var xml2js = require('xml2js')
 
     // Use this file to write and read the xml file.
-    var LibraryDAO = {
+  var LibraryDAO = {
 
         // Get the entire file from the file system.
-        readXMLFile: function(callback) {
-
-        },
+    readXMLFile: function (callback) {
+      let parser = new xml2js.Parser()
+      fs.readFile('./books.xml', (err, data) => {
+        if (err) console.log(err)
+        parser.parseString(data, (err, result) => {
+          if (err) console.log(err)
+          callback(result)
+        })
+      })
+    },
 
         // Write the entire file from the file system.
-        writeXMLFile: function(data) {
+    writeXMLFile: function (data) {
 
-        }
-    };
+    }
+  }
 
-    module.exports = LibraryDAO;
-}());
+  module.exports = LibraryDAO
+}())
