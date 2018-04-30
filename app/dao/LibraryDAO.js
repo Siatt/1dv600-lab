@@ -17,7 +17,7 @@
         if (err) console.log(err)
         parser.parseString(data, (err, result) => {
           if (err) console.log(err)
-          callback(result)
+          callback(result.catalog.book)
         })
       })
     },
