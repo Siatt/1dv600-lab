@@ -14,8 +14,7 @@
           book: remain
         }
       }
-      LibraryDAO.writeXMLFile(newList)
-      callback()
+      LibraryDAO.writeXMLFile(newList, callback)
     })
   }
 }())
