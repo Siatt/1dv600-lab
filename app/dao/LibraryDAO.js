@@ -15,6 +15,7 @@
       let parser = new xml2js.Parser()
       fs.readFile('./books.xml', (err, data) => {
         if (err) console.log(err)
+
         parser.parseString(data, (err, result) => {
           if (err) console.log(err)
           callback(result.catalog.book)
@@ -23,12 +24,13 @@
     },
 
         // Write the entire file from the file system.
-    writeXMLFile: function (data) {
+    writeXMLFile: function (data, callback) {
       let builder = new xml2js.Builder()
       let xml = builder.buildObject(data)
       fs.writeFile('./books.xml', xml, err => {
         if (err) console.log(err)
       })
+      callback()
     }
   }
 

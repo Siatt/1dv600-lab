@@ -1,11 +1,26 @@
 (function () {
-    "use strict";
+  'use strict'
 
-    var LibraryDAO = require('../dao/LibraryDAO');
+  var LibraryDAO = require('../dao/LibraryDAO')
 
-
-    module.exports = function (id, data, callback) {
-
-    };
-
-}());
+  module.exports = function (id, data, callback) {
+    LibraryDAO.readXMLFile(books => {
+      books.forEach(book => {
+        if (book.$.id === id) {
+          book.author = data.author
+          book.title = data.title
+          book.genre = data.genre
+          book.price = data.price
+          book.published = data.published
+          book.description = data.description
+        }
+      })
+      let updatedList = {
+        catalog: {
+          book: books
+        }
+      }
+      LibraryDAO.writeXMLFile(updatedList, callback)
+    })
+  }
+}())
