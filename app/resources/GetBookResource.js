@@ -4,8 +4,14 @@
   var LibraryDAO = require('../dao/LibraryDAO')
 
   module.exports = function (id, callback) {
+    let selectedBook
     LibraryDAO.readXMLFile(books => {
-      let selectedBook = books.filter(book => book.id === id)
+      // selectedBook = books.filter(book => book.id === id)
+      books.forEach(current => {
+        if (current.$.id === id) {
+          selectedBook = current
+        }
+      })
       callback(JSON.stringify(selectedBook))
     })
   }
