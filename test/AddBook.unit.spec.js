@@ -17,16 +17,19 @@ describe('Add book unit test', () => {
       originalLength = result
     })
   })
-  
-//   after(function () {
-//       helper.resetBooks()
-//   })
 
-  it('Adds book to list', () => {
-    addBook(mockObj, () => {
-      LibraryDAO.readXMLFile(books => {
-        expect(originalLength).to.not.equal(books.length)
+  // after(async function () {
+  //     helper.resetBooks()
+  // })
+
+  it('Adds book to list', async () => {
+    await addBook(mockObj, async () => {
+      setTimeout(() => {
+        LibraryDAO.readXMLFile(books => {
+          expect(originalLength).to.not.equal(books.length)
+        }, 2000)
       })
     })
+    // expect(originalLength).to.not.equal(10)
   })
 })

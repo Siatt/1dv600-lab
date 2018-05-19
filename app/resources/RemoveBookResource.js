@@ -1,3 +1,10 @@
+/**
+ * Module for RemoveBook function
+ *
+ * @module RemoveBookResource.js
+ * @author Lucas Sjöqvist
+ * @version 1.0.0
+ */
 (function () {
   'use strict'
 
@@ -5,7 +12,6 @@
 
   module.exports = function (id, callback) {
     LibraryDAO.readXMLFile(books => {
-      console.log(books)
       let remain = books.filter(book => {
         return book.$.id !== id
       })
@@ -14,7 +20,7 @@
           book: remain
         }
       }
-      LibraryDAO.writeXMLFile(newList, callback)
+      LibraryDAO.writeXMLFile(newList, () => callback())
     })
   }
 }())

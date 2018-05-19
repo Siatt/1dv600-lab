@@ -1,3 +1,10 @@
+/**
+ * Module for Read and Write to books.xml functions
+ *
+ * @module LibraryDAO.js
+ * @author Lucas Sjöqvist
+ * @version 1.0.0
+ */
 (function () {
   'use strict'
 
@@ -14,10 +21,10 @@
     readXMLFile: function (callback) {
       let parser = new xml2js.Parser()
       fs.readFile('./books.xml', (err, data) => {
-        if (err) console.log(err)
+        if (err) throw err
 
         parser.parseString(data, (err, result) => {
-          if (err) console.log(err)
+          if (err) throw err
           callback(result.catalog.book)
         })
       })
@@ -28,9 +35,9 @@
       let builder = new xml2js.Builder()
       let xml = builder.buildObject(data)
       fs.writeFile('./books.xml', xml, err => {
-        if (err) console.log(err)
+        if (err) throw err
+        callback()
       })
-      callback()
     }
   }
 

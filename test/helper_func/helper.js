@@ -1,3 +1,10 @@
+/**
+ * Module for helper functions for testing
+ *
+ * @module helper.js
+ * @author Lucas Sjöqvist
+ * @version 1.0.0
+ */
 'use strict'
 
 let fs = require('fs')

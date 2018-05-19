@@ -1,3 +1,10 @@
+/**
+ * Module for EditBook function
+ *
+ * @module EditBookResource.js
+ * @author Lucas Sjöqvist
+ * @version 1.0.0
+ */
 (function () {
   'use strict'
 

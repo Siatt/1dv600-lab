@@ -1,4 +1,10 @@
-
+/**
+ * Module for GetBooks function
+ *
+ * @module GetBooksResource.js
+ * @author Lucas Sjöqvist
+ * @version 1.0.0
+ */
 (function () {
   'use strict'
 

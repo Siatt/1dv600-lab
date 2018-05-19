@@ -1,3 +1,10 @@
+/**
+ * Module for AddBook function
+ *
+ * @module AddBookResource.js
+ * @author Lucas Sjöqvist
+ * @version 1.0.0
+ */
 (function () {
   'use strict'
 
@@ -25,7 +32,9 @@
           book: books
         }
       }
-      LibraryDAO.writeXMLFile(newList, callback)
+      LibraryDAO.writeXMLFile(newList, function () {
+        callback()
+      })
     })
   }
 }())
